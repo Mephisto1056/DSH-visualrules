@@ -64,4 +64,5 @@ packs:
 
   - id: team/coding-style
     title: 团队编码规范
+    # 把 examples/rules/coding-style.md 复制到仓库的 .dsh/rules/ 下。
     file: .dsh/rules/coding-style.md
