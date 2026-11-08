@@ -9,6 +9,7 @@
 
 <div align="center">
   <a href="https://github.com/Mephisto1056/DSH-visualrules"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Mephisto1056/DSH-visualrules?style=flat" /></a>
+  <a href="https://github.com/Mephisto1056/DSH-visualrules/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Mephisto1056/DSH-visualrules/actions/workflows/ci.yml/badge.svg" /></a>
   <a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a>
   <a href="https://nodejs.org"><img alt="Node: >=20" src="https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&logoColor=white" /></a>
   <img alt="DSH 0.2.2-rc.1+" src="https://img.shields.io/badge/DSH-0.2.2--rc.1%2B-4d6bfe" />
