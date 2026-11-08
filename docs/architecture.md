@@ -90,3 +90,9 @@ The Client uses theme tokens only (`--dsw-alias-*`), registers its own CSS once,
 - No network requests; Git is read through the Host `subprocess` service when present, falling back to `execFile`.
 - No secrets: server records contain a login name and a key reference name.
 - Failure policy: fail open for enforcement, degrade to display for inspection. A plugin bug must not stop a commit, a model step, or DSH startup.
+
+## Design notes
+
+- [PRD v0.4](./design/prd-v0.4.md) — the original product requirements, milestone status, and the remaining gaps.
+- [Commit validation](./commit-validation.md) — the rule table, coverage, and bypass semantics.
+- [Configuration](./configuration.md) — every field in both layers.
