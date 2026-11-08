@@ -284,6 +284,38 @@ test('the client module loads and registers the validation surfaces', () => {
   assert.ok(names.includes('sidebar.right.pane.tab'))
 })
 
+test('the client store exposes every method the views call', () => {
+  const { registrations } = loadClient()
+  const entry = registrations.find((item) => item.options.name === 'settings.section')
+  assert.ok(entry?.options?.inject, 'settings section injects the store')
+  const { vr } = entry.options.inject()
+  for (const method of [
+    'loadValidation',
+    'saveValidation',
+    'checkProposal',
+    'createBypass',
+    'revokeBypass',
+    'loadHookPreview',
+    'installHook',
+    'uninstallHook',
+    'loadCommits',
+    'deleteCommit',
+    'clearCommits',
+  ]) {
+    assert.equal(typeof vr[method], 'function', `vr.${method} must be exported from createStore`)
+  }
+})
+
+test('every registered surface server-renders without throwing', () => {
+  const { registrations } = loadClient()
+  for (const entry of registrations) {
+    assert.doesNotThrow(
+      () => renderComponent(entry.component),
+      `component for ${entry.options.name} threw during render`,
+    )
+  }
+})
+
 test('the full profile page renders the Validation tab', () => {
   const { registrations } = loadClient()
   const entry = registrations.find((item) => item.options.name === 'main')

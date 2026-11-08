@@ -319,7 +319,7 @@ Model-facing tools: `visualrules_check` (pre-flight) and `visualrules_status` (r
 ```sh
 npm install
 npm run check     # syntax + manifest + export surface
-npm test          # 73 tests: rules, command parsing, sources, hooks, guard, API, profile, injection
+npm test          # 75 tests: rules, command parsing, sources, hooks, guard, API, profile, injection
 npm run verify    # check + test
 ```
 
