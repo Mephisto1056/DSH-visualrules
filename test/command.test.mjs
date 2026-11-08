@@ -32,6 +32,7 @@ test('handles cd and git -C cwd changes', () => {
   assert.equal(first('cd /tmp/x && git commit -m "feat: x"').cwd, '/tmp/x')
   assert.equal(first('git -C /tmp/y commit -m "feat: y"').cwd, '/tmp/y')
   assert.equal(first('FOO=1 git -C ../z commit -m "feat: z"').cwd, '/z')
+  assert.equal(first('git -C ~/repo commit -m "feat: home"').cwd.endsWith('/repo'), true)
 })
 
 test('handles combined short flags', () => {
