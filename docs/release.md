@@ -6,6 +6,10 @@
 - GitHub repository `Mephisto1056/DSH-visualrules`.
 - `npm login` on the release machine.
 
+## Publish path
+
+The `Release` workflow triggered by a GitHub Release only **verifies** the artifact. npm publishing is an explicit manual run (`workflow_dispatch` with `dry_run: false`), so a missing token can never turn a release red. The steps below are the local equivalent.
+
 ## Checklist
 
 ```sh

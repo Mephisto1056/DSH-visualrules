@@ -15,7 +15,8 @@ permissions:
   id-token: write
 
 jobs:
-  publish:
+  verify:
+    name: Verify the release artifact
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -31,11 +32,29 @@ jobs:
       - run: npm run verify
       - name: Inspect package contents
         run: npm pack --dry-run
-      - name: Publish
-        if: github.event_name == 'release' || inputs.dry_run == false
-        run: npm publish --access public --provenance
+
+  publish:
+    name: Publish to npm
+    needs: verify
+    # A GitHub Release verifies the artifact only. Publishing is an explicit
+    # manual run, so a release without an npm token can never fail the repo.
+    if: github.event_name == 'workflow_dispatch' && inputs.dry_run == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-# Publishing requires an NPM_TOKEN repository secret with publish rights for
-# the `dsh-visualrules` package. Without it, keep the workflow on dry runs.
+# Configure an NPM_TOKEN repository secret with publish rights for the
+# `dsh-visualrules` package, then run this workflow manually with dry_run=false.
