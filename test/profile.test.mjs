@@ -184,4 +184,19 @@ packs: []
   assert.equal(profile.environment.port, 2222)
   assert.equal(profile.environment.user, 'deploy')
   assert.equal(profile.environment.keyRef, 'dsh-ssh-a')
+  assert.equal(profile.team.environments[0].host, 'stg.example.com')
+
+  // Disabling server information must remove host / port / jump / accounts
+  // from every Host response, not just hide them in the UI.
+  const hiddenStore = makeStore({
+    showServerInfo: false,
+    servers: { staging: { user: 'deploy', keyRef: 'dsh-ssh-a' } },
+  })
+  const hidden = await buildProfile(fakeCtx(), { store: hiddenStore }, root, {})
+  assert.equal(hidden.environment.host, '')
+  assert.equal(hidden.environment.user, '')
+  assert.deepEqual(hidden.workspace.servers, {})
+  assert.equal(hidden.team.environments[0].name, 'staging')
+  assert.equal(hidden.team.environments[0].host, '')
+  assert.equal(hidden.team.environments[0].port, null)
 })

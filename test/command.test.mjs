@@ -4,6 +4,7 @@ import {
   extractHeredocs,
   findGitOperations,
   operationMessage,
+  redactCommand,
   shortCommand,
   splitSegments,
   tokenize,
@@ -112,4 +113,11 @@ test('recognizes dangerous commands in production checks', () => {
 
 test('shortCommand caps output', () => {
   assert.ok(shortCommand('x'.repeat(400)).length <= 181)
+})
+
+test('credential-shaped values are redacted before storage', () => {
+  assert.equal(redactCommand('API_TOKEN=secret-value git commit -m x'), 'API_TOKEN=*** git commit -m x')
+  assert.equal(redactCommand('curl -H "Authorization: Bearer abcdefghijklmn"'), 'curl -H "Authorization=*** ***"')
+  assert.equal(redactCommand('deploy --password hunter2'), 'deploy --password ***')
+  assert.equal(redactCommand('git commit -m "feat: add login"'), 'git commit -m "feat: add login"')
 })

@@ -41,13 +41,15 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Security
 
+- Server information gating now removes environment hosts, ports, jump hosts, and server accounts from every Host response until `showServerInfo` is enabled — not just from the rendered UI.
+- Persisted validation events and AI commit commands redact credential-shaped values (`TOKEN=…`, `--password …`, `Bearer …`, GitHub / OpenAI-style keys).
 - Rule packs, personal settings, bypasses, events, and commits stay in the DSH local storage domain.
 - The team configuration remains read-only; hooks are the only repository write and are explicit and reversible.
 - Hook execution fails open when the checker or Node.js is missing.
 
 ### Verification
 
-- 76 automated tests across rules, command parsing, sources, hooks, guard behavior, API routes, profile assembly, and injection.
+- 77 automated tests across rules, command parsing, sources, hooks, guard behavior, API routes, profile assembly, and injection.
 - Real-host smoke on DSH 0.2.2-rc.1 (desktop profile):
   - a protected-branch commit through the tool layer is denied with the expected text;
   - `git switch -c feature/... && git commit` succeeds;

@@ -313,7 +313,7 @@ systemPrompt.section()，按 Agent、按请求组装
 ```sh
 npm install
 npm run check     # 语法 + manifest + 导出面
-npm test          # 76 个用例：规则、命令解析、规范源、钩子、guard、API、档案、注入
+npm test          # 77 个用例：规则、命令解析、规范源、钩子、guard、API、档案、注入
 npm run verify    # check + test
 ```
 
