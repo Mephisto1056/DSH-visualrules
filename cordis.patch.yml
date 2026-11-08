@@ -1,0 +1,5 @@
+# dsh-visualrules: workspace rules profile + session-scoped rule injection.
+- insert:
+    - id: visualrules
+      name: 'dsh-visualrules'
+      config: {}

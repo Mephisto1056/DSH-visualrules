@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/Mephisto1056/DSH-visualrules/security/advisories/new
+    about: Report a vulnerability privately; do not open a public issue.
+  - name: Documentation
+    url: https://github.com/Mephisto1056/DSH-visualrules/tree/main/docs
+    about: Configuration, validation, injection, architecture, compatibility.

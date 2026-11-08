@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Run the gates but do not publish
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - name: Inspect package contents
+        run: npm pack --dry-run
+      - name: Publish
+        if: github.event_name == 'release' || inputs.dry_run == false
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+# Publishing requires an NPM_TOKEN repository secret with publish rights for
+# the `dsh-visualrules` package. Without it, keep the workflow on dry runs.

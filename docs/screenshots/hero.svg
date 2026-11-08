@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="DSH VisualRules: workspace profile, rule injection, commit guard, and AI commit index">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="0.55" stop-color="#0e1630"/>
+      <stop offset="1" stop-color="#0a0f1f"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6f8cff"/>
+      <stop offset="1" stop-color="#4d6bfe"/>
+    </linearGradient>
+    <linearGradient id="ok" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4ade80"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="danger" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fb7185"/>
+      <stop offset="1" stop-color="#ef4444"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1e2a4a" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.55"/>
+  <circle cx="1040" cy="90" r="220" fill="#4d6bfe" opacity="0.12"/>
+  <circle cx="120" cy="560" r="200" fill="#22c55e" opacity="0.08"/>
+
+  <g font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <g transform="translate(72, 70)">
+      <rect x="0" y="0" width="44" height="44" rx="12" fill="url(#brand)" opacity="0.18" stroke="#4d6bfe" stroke-width="1.5"/>
+      <path d="M22 9 35 14v10c0 8-5.4 14-13 17-7.6-3-13-9-13-17V14L22 9Z" fill="none" stroke="#8ea4ff" stroke-width="2" stroke-linejoin="round"/>
+      <path d="m15 23 4.2 4.2 8.8-9" fill="none" stroke="#8ea4ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="60" y="22" fill="#f8fafc" font-size="26" font-weight="700">DSH VisualRules</text>
+      <text x="60" y="46" fill="#93a4c8" font-size="15">Workspace rules, visible · enforced · injected</text>
+    </g>
+
+    <!-- Workspace card -->
+    <g transform="translate(72, 180)">
+      <rect width="320" height="330" rx="20" fill="#111a31" stroke="#243358"/>
+      <text x="24" y="38" fill="#93a4c8" font-size="12" font-weight="700" letter-spacing="1.4">WORKSPACE PROFILE</text>
+      <text x="24" y="70" fill="#f8fafc" font-size="20" font-weight="650">pay-core</text>
+      <text x="24" y="94" fill="#7d8fb5" font-size="12.5">/Users/me/code/pay-core</text>
+
+      <g transform="translate(24, 116)">
+        <rect width="272" height="44" rx="10" fill="#0b1428" stroke="#223055"/>
+        <circle cx="18" cy="22" r="4" fill="#4ade80"/>
+        <text x="32" y="19" fill="#dbe4f7" font-size="12.5" font-weight="600">ruoyu@company.com</text>
+        <text x="32" y="34" fill="#7d8fb5" font-size="10.5">git identity · repository scope</text>
+      </g>
+
+      <g transform="translate(24, 170)">
+        <rect width="272" height="44" rx="10" fill="#0b1428" stroke="#223055"/>
+        <text x="16" y="20" fill="#8ea4ff" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">feature/split-coupon</text>
+        <text x="16" y="35" fill="#7d8fb5" font-size="10.5">branch · up to date with origin</text>
+      </g>
+
+      <g transform="translate(24, 224)">
+        <rect width="128" height="44" rx="10" fill="#2a1a12" stroke="#7c4a1c"/>
+        <text x="14" y="20" fill="#fdba74" font-size="11" font-weight="700">STAGING</text>
+        <text x="14" y="35" fill="#c9a27a" font-size="10.5">warn level</text>
+      </g>
+      <g transform="translate(168, 224)">
+        <rect width="128" height="44" rx="10" fill="#2a1218" stroke="#7f1d2d"/>
+        <text x="14" y="20" fill="#fda4af" font-size="11" font-weight="700">PRODUCTION</text>
+        <text x="14" y="35" fill="#c48a99" font-size="10.5">pulse · 2 rules</text>
+      </g>
+      <g transform="translate(24, 280)">
+        <rect width="272" height="34" rx="9" fill="#0b1428" stroke="#223055"/>
+        <text x="14" y="21" fill="#7d8fb5" font-size="11">Team · 支付平台组 · 2 reviewers</text>
+      </g>
+    </g>
+
+    <!-- Rule packs -->
+    <g transform="translate(440, 180)">
+      <rect width="320" height="330" rx="20" fill="#111a31" stroke="#243358"/>
+      <text x="24" y="38" fill="#93a4c8" font-size="12" font-weight="700" letter-spacing="1.4">RULE LIBRARY → SESSION</text>
+      <text x="24" y="70" fill="#f8fafc" font-size="20" font-weight="650">One source, many repos</text>
+      <text x="24" y="94" fill="#7d8fb5" font-size="12.5">layered · budgeted · previewable</text>
+
+      <g transform="translate(24, 116)">
+        <rect width="272" height="52" rx="10" fill="#0b1428" stroke="#223055"/>
+        <rect x="0" y="0" width="4" height="52" rx="2" fill="#8ea4ff"/>
+        <text x="18" y="22" fill="#dbe4f7" font-size="12.5" font-weight="600">personal/general</text>
+        <text x="18" y="38" fill="#7d8fb5" font-size="10.5">个人 → 12.4k chars · enabled</text>
+      </g>
+      <g transform="translate(24, 176)">
+        <rect width="272" height="52" rx="10" fill="#0b1428" stroke="#223055"/>
+        <rect x="0" y="0" width="4" height="52" rx="2" fill="#4ade80"/>
+        <text x="18" y="22" fill="#dbe4f7" font-size="12.5" font-weight="600">team/git-rules</text>
+        <text x="18" y="38" fill="#7d8fb5" font-size="10.5">.dsh/rules/git-rules.md · repo shared</text>
+      </g>
+      <g transform="translate(24, 236)">
+        <rect width="272" height="52" rx="10" fill="#0b1428" stroke="#223055"/>
+        <rect x="0" y="0" width="4" height="52" rx="2" fill="#fdba74"/>
+        <text x="18" y="22" fill="#dbe4f7" font-size="12.5" font-weight="600">workspace extra</text>
+        <text x="18" y="38" fill="#7d8fb5" font-size="10.5">local-only supplement · wins on conflict</text>
+      </g>
+
+      <g transform="translate(24, 302)">
+        <rect width="272" height="12" rx="6" fill="#0b1428" stroke="#223055"/>
+        <rect width="196" height="12" rx="6" fill="url(#brand)"/>
+        <text x="0" y="30" fill="#7d8fb5" font-size="10.5">budget 6% of context window · truncated entries reported</text>
+      </g>
+    </g>
+
+    <!-- Guard -->
+    <g transform="translate(808, 180)">
+      <rect width="320" height="330" rx="20" fill="#111a31" stroke="#243358"/>
+      <text x="24" y="38" fill="#93a4c8" font-size="12" font-weight="700" letter-spacing="1.4">COMMIT GUARD</text>
+      <text x="24" y="70" fill="#f8fafc" font-size="20" font-weight="650">Blocked before it runs</text>
+      <text x="24" y="94" fill="#7d8fb5" font-size="12.5">AI tool layer + optional Git hook</text>
+
+      <g transform="translate(24, 116)">
+        <rect width="272" height="118" rx="12" fill="#1c1118" stroke="#7f1d2d"/>
+        <text x="14" y="24" fill="#fda4af" font-size="11" font-weight="700">BLOCKED · 2 FINDINGS</text>
+        <text x="14" y="46" fill="#e8d5da" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">[branch.protected] main</text>
+        <text x="14" y="64" fill="#bfa3ab" font-size="10.5">Create feature/… and open a PR.</text>
+        <text x="14" y="86" fill="#e8d5da" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">[commit.format] conventional</text>
+        <text x="14" y="104" fill="#bfa3ab" font-size="10.5">Source + fix returned to the model.</text>
+      </g>
+
+      <g transform="translate(24, 250)">
+        <rect width="272" height="40" rx="10" fill="#0b1428" stroke="#223055"/>
+        <rect x="12" y="12" width="16" height="16" rx="4" fill="#22c55e" opacity="0.2"/>
+        <path d="m16 20 3 3 6-6" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="38" y="25" fill="#dbe4f7" font-size="11.5">AI commit index · b91949e · feature/live-test</text>
+      </g>
+      <g transform="translate(24, 300)">
+        <text x="0" y="0" fill="#7d8fb5" font-size="10.5">No agents.md edits · no Git config writes · server keys never stored</text>
+      </g>
+    </g>
+
+    <text x="72" y="585" fill="#5f7196" font-size="12">DSH 0.2.2-rc.1+ · MIT · github.com/Mephisto1056/DSH-visualrules</text>
+  </g>
+</svg>

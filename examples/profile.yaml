@@ -1,0 +1,67 @@
+# Example team-layer configuration.
+# Copy this file to <repo>/.dsh/profile.yaml and commit it.
+# The plugin reads it; it never writes it.
+
+version: 1
+team: 支付平台组
+environment: staging
+
+environments:
+  - { name: staging, host: stg.example.com, level: warn }
+  - { name: prod, host: prod.example.com, level: danger }
+
+git:
+  branch_pattern: "^(feature|fix|hotfix)/[a-z0-9-]+$"
+  commit_format: conventional
+  header_max_length: 72
+  require_issue: true
+  issue_pattern: "[A-Z]+-[0-9]+"
+  merge_strategy: squash
+  protected_branches: [main, "release/*"]
+  tag_pattern: "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+  allowed_commit_types: [feat, fix, docs, test, refactor, chore]
+  review:
+    min_approvals: 2
+
+dev:
+  toolchain: { node: "20.x", python: "3.11" }
+  lint: eslint
+  formatter: prettier
+  test: [unit-test]
+  ci_required: [lint, unit-test]
+  dirs:
+    src: "业务代码"
+    tests: "测试"
+
+docs:
+  wiki: https://example.com/wiki
+  issues: https://example.com/board
+  contributing: CONTRIBUTING.md
+  pr_template: .github/pull_request_template.md
+
+team_info:
+  owner: 张三
+  contacts:
+    - 张三 · 负责人 · zhang@example.com
+    - 李四 · 值班 · li@example.com
+  release_window: 每周四 20:00
+  timezone: Asia/Shanghai
+
+# Team packs are read-only in the plugin UI. Choose one source form per pack:
+#   file: .dsh/rules/git-rules.md   (must stay inside this repository)
+#   content: |                      (inline Markdown)
+packs:
+  - id: team/git-rules
+    title: 团队提交规范
+    description: 分支、提交与合并约定
+    content: |
+      # 团队提交规范
+
+      - 分支名必须符合 `feature/`、`fix/` 或 `hotfix/` 前缀。
+      - Commit message 使用 Conventional Commits。
+      - 每次提交必须引用 Issue 编号。
+      - `main` 与 `release/*` 只能通过 PR 合并。
+
+  - id: team/coding-style
+    title: 团队编码规范
+    file: .dsh/rules/coding-style.md

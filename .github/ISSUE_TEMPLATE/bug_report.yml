@@ -1,0 +1,97 @@
+name: Bug report
+description: Something in dsh-visualrules does not behave as documented
+title: "[bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please do not paste tokens, private keys, or customer data.
+  - type: input
+    id: dsh
+    attributes:
+      label: DSH version
+      placeholder: "0.2.2-rc.1"
+    validations:
+      required: true
+  - type: input
+    id: plugin
+    attributes:
+      label: Plugin version
+      placeholder: "0.2.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - macOS
+        - Linux
+        - Windows (Git Bash)
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      options:
+        - Workspace profile / header entry
+        - Right-sidebar preview
+        - Rule packs
+        - Injection
+        - Commit validation
+        - Git hooks
+        - AI commit index
+        - Settings page
+        - Installation / activation
+    validations:
+      required: true
+  - type: dropdown
+    id: hook
+    attributes:
+      label: Was a Git hook installed?
+      options:
+        - "No"
+        - "Yes"
+        - "Not sure"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a session in …
+        2. Run/click …
+        3. See …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the exact error text and, if relevant, the workspace type (Git, monorepo, worktree, non-Git).
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant configuration (redacted)
+      description: A minimal `.dsh/profile.yaml` or the Validation screen values. Remove personal paths and secrets.
+      render: yaml
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmations
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: This report contains no secrets or personal credentials.
+          required: true

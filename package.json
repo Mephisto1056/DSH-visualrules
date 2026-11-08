@@ -1,0 +1,85 @@
+{
+  "name": "dsh-visualrules",
+  "version": "0.2.0",
+  "description": "Workspace profiles, team rules, commit validation, and session-scoped rule injection for DeepSeek Harness.",
+  "type": "module",
+  "license": "MIT",
+  "author": "dsh-visualrules contributors",
+  "homepage": "https://github.com/Mephisto1056/DSH-visualrules#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mephisto1056/DSH-visualrules.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mephisto1056/DSH-visualrules/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "cordis-plugin",
+    "workspace",
+    "git",
+    "commit",
+    "commitlint",
+    "team-rules",
+    "sidebar"
+  ],
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "lib/**/*.js",
+    "lib/hook/*.mjs",
+    "locale/*.json",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "README_ZH.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "examples",
+    "scripts/hooks.mjs",
+    "docs/**/*.md",
+    "docs/screenshots/*.svg"
+  ],
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.2-rc.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  },
+  "dependencies": {
+    "yaml": "^2.9.1",
+    "zod": "^4.4.3"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "verify": "npm run check && npm test",
+    "hooks": "node scripts/hooks.mjs"
+  },
+  "devDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

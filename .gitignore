@@ -1,0 +1,15 @@
+node_modules/
+*.log
+.DS_Store
+.DS_Store?
+._*
+coverage/
+.nyc_output/
+*.tgz
+.env
+.env.*
+!.env.example
+
+# Local DSH data — never commit a personal profile or stored rules.
+.dsh/personal/
+.dsh/cache/
