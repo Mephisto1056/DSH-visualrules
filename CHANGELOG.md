@@ -47,7 +47,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Verification
 
-- 75 automated tests across rules, command parsing, sources, hooks, guard behavior, API routes, profile assembly, and injection.
+- 76 automated tests across rules, command parsing, sources, hooks, guard behavior, API routes, profile assembly, and injection.
 - Real-host smoke on DSH 0.2.2-rc.1 (desktop profile):
   - a protected-branch commit through the tool layer is denied with the expected text;
   - `git switch -c feature/... && git commit` succeeds;

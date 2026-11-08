@@ -244,6 +244,31 @@ test('checkProposal validates message and branch without executing Git', async (
   assert.equal(ok.blocked, false)
 })
 
+test('dangerous production commands ask for approval when enabled', async () => {
+  clearTeamConfigCache()
+  const root = tempRepo('danger')
+  fs.writeFileSync(
+    path.join(root, '.dsh', 'profile.yaml'),
+    `version: 1
+environment: prod
+environments:
+  - { name: prod, host: prod.example.com, level: danger }
+git:
+  commit_format: conventional
+`,
+    'utf8',
+  )
+  const { store, state } = makeStore(root)
+  state.workspace.validation.confirmDanger = true
+  state.workspace.environment = 'prod'
+  const { ctx, handlers } = fakeContext(root)
+  createValidator(ctx, { store })
+  const { decision } = await runPreExecute(handlers, makeExec('kubectl delete pod api-0', root))
+  assert.equal(decision.kind, 'ask')
+  assert.match(decision.reason, /生产环境/)
+  assert.match(decision.displayReason.zh, /Kubernetes/)
+})
+
 test('a successful AI commit is recorded in the local index', async () => {
   clearTeamConfigCache()
   const root = tempRepo('record')

@@ -225,6 +225,16 @@ test('all client API routes work through the plugin entry', { skip: !gitAvailabl
   assert.equal(hookStatus.ok, true)
   assert.equal(hookStatus.value.installed, false)
 
+  const installedHook = await call(handlers, '/hook/install', { cwd: root })
+  assert.equal(installedHook.ok, true)
+  assert.equal(installedHook.value.ok, true)
+  const installedStatus = await call(handlers, '/hook/status', { cwd: root })
+  assert.equal(installedStatus.value.installed, true)
+  const removedHook = await call(handlers, '/hook/uninstall', { cwd: root })
+  assert.equal(removedHook.ok, true)
+  assert.equal(removedHook.value.ok, true)
+  assert.equal((await call(handlers, '/hook/status', { cwd: root })).value.installed, false)
+
   const bypass = await call(handlers, '/bypass/create', { cwd: root, sessionId: 's1', reason: 'hotfix approved' })
   assert.equal(bypass.ok, true)
   assert.ok(bypass.value.bypass.id)
